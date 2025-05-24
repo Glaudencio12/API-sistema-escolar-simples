@@ -16,28 +16,32 @@ public class ClassController {
     @Autowired
     private ClassService service;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ClassDTO create(@RequestBody ClassDTO class_){
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public ClassDTO create(@RequestBody ClassDTO class_) {
         return service.createClass(class_);
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ClassDTO findById(@PathVariable("id") Long id){
+    @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ClassDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ClassDTO> findAll(){
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public List<ClassDTO> findAll() {
         return service.findAll();
     }
 
-    @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ClassDTO update(@RequestBody ClassDTO class_){
+    @PutMapping(value = "/update", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public ClassDTO update(@RequestBody ClassDTO class_) {
         return service.updateClass(class_);
     }
 
     @DeleteMapping(value = "/delete/{idClass}")
-    public ResponseEntity<?> delete(@PathVariable("idClass") Long idClass){
+    public ResponseEntity<?> delete(@PathVariable("idClass") Long idClass) {
         service.delete(idClass);
         return ResponseEntity.noContent().build();
     }
