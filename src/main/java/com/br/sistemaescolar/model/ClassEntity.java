@@ -28,6 +28,6 @@ public class ClassEntity {
     @Enumerated(EnumType.STRING)
     private ShiftClass shift;
 
-    @OneToMany(mappedBy = "class_", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "class_", fetch = FetchType.EAGER)
     private List<StudentEntity> students = new ArrayList<>();
 }
