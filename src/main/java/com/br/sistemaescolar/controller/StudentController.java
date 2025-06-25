@@ -18,35 +18,35 @@ public class StudentController {
     @PostMapping(value = "/class/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public StudentDTO create(@RequestBody StudentDTO student, @PathVariable("id") long id) {
+    public StudentDTO createStudent(@RequestBody StudentDTO student, @PathVariable("id") long id) {
         return service.createAluno(student, id);
     }
 
     @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public StudentDTO findById(@PathVariable("id") Long id) {
+    public StudentDTO findStudentById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public List<StudentDTO> findAll() {
+    public List<StudentDTO> findAllStudents() {
         return service.findaAll();
     }
 
-    @PutMapping(value = "/update", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
+    @PutMapping(value = "/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public StudentDTO update(@RequestBody StudentDTO student) {
-        return service.updateStudent(student);
+    public StudentDTO updateStudent(@PathVariable("id") Long id, @RequestBody StudentDTO student) {
+        return service.updateStudent(id, student);
     }
 
-    @PutMapping(value = "/update/class/{idClass}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
+    @PutMapping(value = "/class/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public StudentDTO update(@RequestBody StudentDTO student, @PathVariable("idClass") Long idClass) {
-        return service.updateStudent(student, idClass);
+    public StudentDTO updateStudentClass(@RequestBody StudentDTO student, @PathVariable("id") Long id) {
+        return service.updateStudent(id, student);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         service.deleteStudent(id);
         return ResponseEntity.noContent().build();

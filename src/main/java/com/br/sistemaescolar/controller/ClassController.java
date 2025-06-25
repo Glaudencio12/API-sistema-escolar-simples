@@ -33,16 +33,16 @@ public class ClassController {
         return service.findAll();
     }
 
-    @PutMapping(value = "/update", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
+    @PutMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE},
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_YAML_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    public ClassDTO update(@RequestBody ClassDTO class_) {
-        return service.updateClass(class_);
+    public ClassDTO update(@PathVariable("id") Long id, @RequestBody ClassDTO class_) {
+        return service.updateClass(id, class_);
     }
 
-    @DeleteMapping(value = "/delete/{idClass}")
-    public ResponseEntity<?> delete(@PathVariable("idClass") Long idClass) {
-        service.delete(idClass);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
