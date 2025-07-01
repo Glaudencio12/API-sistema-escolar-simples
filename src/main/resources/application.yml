@@ -6,13 +6,8 @@ spring:
     url: jdbc:mysql://localhost:3306/sistema_escolar?useTimezone=true&serverTimezone=UTC
     username: root
     password: admin123
-    testWhileIdle: true
-    timeBetweenEvictionRunsMillis: 60000
-    validationQuery: "SELECT 1"
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate.dialect: org.hibernate.dialect.MySQLDialect
     show-sql: false
     open-in-view: false
