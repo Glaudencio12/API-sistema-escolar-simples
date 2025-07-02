@@ -5,11 +5,18 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: sistema_escolar
-      MYSQL_USER: usuario
-      MYSQL_PASSWORD: senha123
-      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
       - "3308:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-padmin123" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -18,13 +25,14 @@ services:
     image: glaudencio123/sistema-escolar-simples:v1
     container_name: sistema_escolar_app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "8081:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/sistema_escolar?useTimezone=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: usuario
-      SPRING_DATASOURCE_PASSWORD: senha123
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     networks:
       - rede_escolar
 volumes:
