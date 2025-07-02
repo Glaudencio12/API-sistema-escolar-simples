@@ -29,13 +29,17 @@
 2.  **Abra o Terminal no Diretório Correto:**
   * Navegue até a pasta raiz do projeto no seu terminal (ou abra o terminal diretamente dentro dessa pasta, dependendo do seu sistema operacional). 
   * **Importante:** Certifique-se de que os arquivos `docker-compose.yml` e o `Dockerfile` da aplicação estejam no diretório atual quando você abrir o terminal.
-
+3. **Crie a imagem da aplicação**
+  * Noterminal executre o seguinte comando:
+     ```bash
+      docker build -t glaudencio123/sistema-escolar-simples:v1 .
+    ```
 3.  **Inicie os Serviços com Docker Compose:**
   * No terminal, execute o seguinte comando:
       ```bash
       docker compose up -d
       ```
-    * Este comando irá baixar as imagens necessárias do Docker Hub (sua aplicação e MySQL), criar os contêineres e iniciá-los em segundo plano.
+    * Este comando irá criar os contêineres e iniciá-los em segundo plano.
 
 4.  **Verifique a Execução dos Contêineres:**
   * Você pode confirmar que os contêineres estão rodando de duas maneiras:
@@ -69,3 +73,5 @@
 * `PUT /students/{id}` — Atualizar aluno via id e body
 * `PUT /students/class/{id}` — Atualizar turma do aluno
 * `DELETE /students/{id}` — Deletar aluno
+
+## Exemplos de testes
