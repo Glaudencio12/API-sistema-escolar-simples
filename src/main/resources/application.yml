@@ -1,11 +1,11 @@
 spring:
+  config:
+    import: classpath:application-secrets.yaml
   application:
     name: Sistema-Escolar
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sistema_escolar?useTimezone=true&serverTimezone=UTC
-    username: root
-    password: admin123
   jpa:
     hibernate:
       ddl-auto: update
