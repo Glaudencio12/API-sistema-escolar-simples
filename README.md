@@ -22,29 +22,38 @@
 ## Passos para Iniciar o Projeto
 
 1.  **Obtenha os Arquivos do Projeto:**
-  * **Opção 1 (Recomendado - Via Git):** Se o projeto estiver em um repositório Git (GitHub, GitLab, etc.), clone-o para sua máquina:
+  * **Opção 1 (Recomendado - Via Git):** clone-o para sua máquina:
       ```bash
       git clone https://github.com/Glaudencio12/API-sistema-escolar-simples
       ```
-2.  **Abra o Terminal no Diretório Correto:**
-  * Navegue até a pasta raiz do projeto no seu terminal (ou abra o terminal diretamente dentro dessa pasta, dependendo do seu sistema operacional). 
-  * **Importante:** Certifique-se de que os arquivos `docker-compose.yml` e o `Dockerfile` da aplicação estejam no diretório atual quando você abrir o terminal.
-3. **Crie a imagem da aplicação**
-  * Noterminal executre o seguinte comando:
-     ```bash
-      docker build -t glaudencio123/sistema-escolar-simples:v1 .
-    ```
-3.  **Inicie os Serviços com Docker Compose:**
-  * No terminal, execute o seguinte comando:
-      ```bash
-      docker compose up -d
-      ```
-    * Este comando irá criar os contêineres e iniciá-los em segundo plano.
+2. **Configure as Variáveis de Ambiente**
+* Edite o arquivo `.env.example` com as credenciais desejadas.
+
+* Exemplo de .env.example:
+  ```env
+    MYSQL_USER=usuario_exemplo
+    MYSQL_PASSWORD=senha_forte
+    MYSQL_ROOT_PASSWORD=admin_root
+    
+    SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/sistema_escolar?useTimezone=true&serverTimezone=UTC
+    SPRING_DATASOURCE_USERNAME=usuario_exemplo
+    SPRING_DATASOURCE_PASSWORD=senha_forte
+
+  ```
+3. **Inicie os Serviços com Docker Compose**
+* Navegue até a pasta raiz do projeto no seu terminal e execute o comando abaixo.
+    * **Importante:** Certifique-se de que os arquivos `docker-compose.yml` e o `Dockerfile` da aplicação estejam no diretório atual quando você abrir o terminal
+   ```bash
+   docker compose up -d
+   ```
+   Esse comando irá:
+   * Baixar a imagem da aplicação do Docker Hub (caso ainda não esteja localmente)
+   * Subir o banco MySQL e a aplicação conectados em rede
+
 
 4.  **Verifique a Execução dos Contêineres:**
   * Você pode confirmar que os contêineres estão rodando de duas maneiras:
     * **Via Terminal:** Execute `docker ps` para ver uma lista dos contêineres ativos.
-    * **Via Docker Desktop:** Abra o aplicativo Docker Desktop. Na seção "Containers" (ou "Contêineres"), você deverá ver `sistema_escolar_app` e `mysql_sistema_escolar` com status "Running" (Em execução).
 
 5.  **Acesse a Aplicação:**
   * Com os serviços em funcionamento, você pode testar a aplicação usando o Postaman
