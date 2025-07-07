@@ -27,9 +27,12 @@
       git clone https://github.com/Glaudencio12/API-sistema-escolar-simples
       ```
 2. **Configure as Variáveis de Ambiente**
-* Edite o arquivo `.env.example` com as credenciais desejadas.
+* Crie um arquivo `.env` com as credenciais desejadas para que o mysql possa funcionar dentro do container.
+* Esse arquivo `.env` deve ser criado na raiz no projeto:
 
-* Exemplo de .env.example:
+<img alt="img.png" src="img.png" height="250"/>
+
+* Exemplo de .env:
   ```env
     MYSQL_USER=usuario_exemplo
     MYSQL_PASSWORD=senha_forte
