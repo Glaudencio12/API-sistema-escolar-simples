@@ -1,16 +1,12 @@
 package com.br.sistemaescolar.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-        import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @NoArgsConstructor
-@Data
 @AllArgsConstructor
-@ToString(exclude = "class_")
+@Getter
+@Setter
 @Entity
 public class StudentEntity {
     @Id

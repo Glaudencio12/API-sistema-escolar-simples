@@ -1,20 +1,16 @@
 package com.br.sistemaescolar.model;
 
 import com.br.sistemaescolar.Enum.ShiftClass;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "students")
+@Getter
+@Setter
 @Entity
 public class ClassEntity {
     @Id

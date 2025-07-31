@@ -1,9 +1,6 @@
-package com.br.sistemaescolar.DTO;
+package com.br.sistemaescolar.DTO.response;
 
 import com.br.sistemaescolar.Enum.ShiftClass;
-import com.br.sistemaescolar.model.StudentEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,9 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ClassDTO extends RepresentationModel<ClassDTO> {
+public class ClassResponseDTO extends RepresentationModel<ClassResponseDTO> {
     private Long id;
     private String name;
     private ShiftClass shift;
-    private List<StudentDTO> students = new ArrayList<>();
+    private List<StudentResponseDTO> students = new ArrayList<>();
 }
