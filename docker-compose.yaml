@@ -22,7 +22,7 @@ services:
     networks:
       - rede_escolar
   app:
-    image: glaudencio123/sistema-escolar-simples:v1
+    image: glaudencio123/sistema-escolar-simples:v2
     container_name: sistema_escolar_app
     depends_on:
       db:
