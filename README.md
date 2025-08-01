@@ -88,8 +88,6 @@
 
 ## Exemplos de Requests para a API
 
-## Endpoints e seus corpos JSON
-
 ### 1. Criar Turma
 
 `POST /class`
@@ -97,7 +95,7 @@
 ```json
 {
   "name": "5º Ano A",
-  "shift": "MORNING"
+  "shift": "MANHA"
 }
 ```
 
